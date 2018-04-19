@@ -6,7 +6,7 @@
 # Instructions:
 # 1. Login to new server as root
 # 2. Run installation script:
-# curl -o- https://raw.githubusercontent.com/Freightseeker/Scripts/master/install.sh | bash
+# wget -O - https://raw.githubusercontent.com/Freightseeker/Scripts/master/install.sh | bash
 #
 ####################################################################
 
