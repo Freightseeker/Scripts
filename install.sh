@@ -22,6 +22,13 @@ GIT_BRANCH=release/1.0.0
 apt-get update
 apt-get upgrade
 
+# Install packages to allow apt to use a repository over HTTPS:
+apt-get install \
+	apt-transport-https \
+	ca-certificates \
+	curl \
+	software-properties-common
+
 # Set correct timezone
 timedatectl set-timezone Europe/Stockholm
 
@@ -29,7 +36,7 @@ timedatectl set-timezone Europe/Stockholm
 apt-get install git
 
 # Generate ssh-key
-read -p "Du you want to generate a new ssh-key? " -n 1 -r
+read -p "Du you want to generate a new ssh-key? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -45,7 +52,7 @@ fi
 # INSTALL NODE JS
 ####################################################################
 
-read -p "Do you want to install NVM (Node.js)? " -n 1 -r
+read -p "Do you want to install NVM (Node.js)? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -64,7 +71,7 @@ fi
 # INSTALL DOCKER CE
 ####################################################################
 
-read -p "Du you want to install latest stable version of Docker CE? " -n 1 -r
+read -p "Du you want to install latest stable version of Docker CE? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -73,13 +80,6 @@ then
 
 	# Update packages
 	apt-get update
-
-	# Install packages to allow apt to use a repository over HTTPS:
-	apt-get install \
-	apt-transport-https \
-	ca-certificates \
-	curl \
-	software-properties-common
 
 	# Add Dockers official GPG key:
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -105,7 +105,7 @@ fi
 # INSTALL FREIGHTSEEKER APPLICATION
 ####################################################################
 
-read -p "Du you want to clone '$GIT_REPOSITORY' and checkout branch '$GIT_BRANCH'? " -n 1 -r
+read -p "Du you want to clone '$GIT_REPOSITORY' and checkout branch '$GIT_BRANCH'? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -117,7 +117,7 @@ then
 	git checkout $GIT_BRANCH
 fi
 
-read -p "Du you want to build and run Freightseeker Angular application? " -n 1 -r
+read -p "Du you want to build and run Freightseeker Angular application? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
