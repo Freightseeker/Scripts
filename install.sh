@@ -6,7 +6,7 @@
 # Instructions:
 # 1. Login to new server as root
 # 2. Run installation script:
-# curl -o- https://bitbucket.org/!api/2.0/snippets/mjarestad/Geo8z5/c9fba3cd5c12155e1baa2c0f1388c1368ef39593/files/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/Freightseeker/Scripts/master/install.sh | bash
 #
 ####################################################################
 
