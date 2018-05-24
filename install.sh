@@ -12,7 +12,7 @@
 
 WEB_ROOT=/var/www/freightseeker
 GIT_REPOSITORY=git@bitbucket.org:mjarestad/freightseekerfrontend.git
-GIT_BRANCH=release/1.0.0
+GIT_BRANCH=master
 
 ####################################################################
 # INITIAL SERVER SETUP
