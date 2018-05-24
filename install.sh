@@ -10,7 +10,7 @@
 #
 ####################################################################
 
-WEB_ROOT=/var/www/freightseeker
+WEB_ROOT=/var/www
 GIT_REPOSITORY=git@bitbucket.org:mjarestad/freightseekerfrontend.git
 GIT_BRANCH=master
 
