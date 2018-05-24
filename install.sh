@@ -122,6 +122,11 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	cd $WEB_ROOT
+	
+	docker stop $(docker ps -a -q)
+	docker rm $(docker ps -a -q)
+	docker rmi $(docker images -q)
+	
 	npm run docker:run:prod:ssr
 fi
 
