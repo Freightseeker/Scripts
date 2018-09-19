@@ -1,17 +1,17 @@
 #!/bin/bash
 
 ####################################################################
-# Installation script for Freightseeker frontend application.
+# Installation script for Freightseeker admin application.
 #
 # Instructions:
 # 1. Login to new server as root
 # 2. Run installation script:
-# bash -c "$(wget -O - https://raw.githubusercontent.com/Freightseeker/Scripts/master/install.sh)"
+# bash -c "$(wget -O - https://raw.githubusercontent.com/Freightseeker/Scripts/master/install-admin.sh)"
 #
 ####################################################################
 
 WEB_ROOT=/var/www
-GIT_REPOSITORY=git@bitbucket.org:mjarestad/freightseekerfrontend.git
+GIT_REPOSITORY=git@bitbucket.org:mjarestad/freightseekeradmin.git
 GIT_TAG=latest
 
 ####################################################################
@@ -127,7 +127,7 @@ then
 	docker rm $(docker ps -a -q)
 	docker rmi $(docker images -q)
 	
-	npm run docker:run:prod:ssr
+	npm run docker:run:prod
 fi
 
 exit
