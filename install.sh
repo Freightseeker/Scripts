@@ -97,7 +97,8 @@ then
 	apt-get update
 
 	# Install the latest version of Docker CE
-	apt-get install docker-ce
+	#apt-get install docker-ce
+	apt-get install docker-ce=18.03.1~ce-0~ubuntu
 
 	# Install Docker Compose
 	curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
