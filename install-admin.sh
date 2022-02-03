@@ -57,6 +57,7 @@ read -p "Do you want to install NVM (Node.js)? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+	apt-get update npm
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | bash
 
 	export NVM_DIR="$HOME/.nvm"
