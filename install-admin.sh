@@ -13,7 +13,7 @@
 WEB_ROOT=/var/www
 GIT_REPOSITORY=git@bitbucket.org:mjarestad/freightseekeradmin.git
 GIT_TAG=latest
-GIT_BRANCH=staging
+GIT_BRANCH=master
 
 ####################################################################
 # INITIAL SERVER SETUP
@@ -108,7 +108,7 @@ fi
 # INSTALL FREIGHTSEEKER APPLICATION
 ####################################################################
 
-read -p "Du you want to clone '$GIT_REPOSITORY' and checkout '$GIT_BRANCH' branch? [Y/n] " -n 1 -r
+read -p "Du you want to clone '$GIT_REPOSITORY' and checkout '$GIT_TAG' tag? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -117,7 +117,7 @@ then
 	git clone $GIT_REPOSITORY $WEB_ROOT
 	chown -R www-data:www-data $WEB_ROOT
 	cd $WEB_ROOT
-	git fetch && git fetch --tags && git checkout $GIT_BRANCH
+	git fetch && git fetch --tags && git checkout $GIT_TAG
 fi
 
 read -p "Du you want to build and run Freightseeker Angular application? [Y/n] " -n 1 -r
