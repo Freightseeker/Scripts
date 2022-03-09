@@ -6,7 +6,7 @@
 # Instructions:
 # 1. Login to new server as root
 # 2. Run installation script:
-# bash -c "$(wget -O - https://raw.githubusercontent.com/Freightseeker/Scripts/master/install-admin.sh)"
+# bash -c "$(wget -O - https://raw.githubusercontent.com/Freightseeker/Scripts/master/install-admin-production.sh)"
 #
 ####################################################################
 
