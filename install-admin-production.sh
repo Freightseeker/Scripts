@@ -37,7 +37,7 @@ timedatectl set-timezone Europe/Stockholm
 apt-get install git
 
 # Generate ssh-key
-read -p "Du you want to generate a new ssh-key? [Y/n] " -n 1 -r
+read -p "Du you want to generate a new ssh-key? [Y/n] " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -53,7 +53,7 @@ fi
 # INSTALL NODE JS
 ####################################################################
 
-read -p "Do you want to install NVM (Node.js)? [Y/n] " -n 1 -r
+read -p "Do you want to install NVM (Node.js)? [Y/n] " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -74,7 +74,7 @@ fi
 # INSTALL DOCKER CE
 ####################################################################
 
-read -p "Du you want to install latest stable version of Docker CE? [Y/n] " -n 1 -r
+read -p "Du you want to install latest stable version of Docker CE? [Y/n] " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -108,7 +108,7 @@ fi
 # INSTALL FREIGHTSEEKER APPLICATION
 ####################################################################
 
-read -p "Du you want to clone '$GIT_REPOSITORY' and checkout '$GIT_TAG' tag? [Y/n] " -n 1 -r
+read -p "Du you want to clone '$GIT_REPOSITORY' and checkout '$GIT_TAG' tag? [Y/n] " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -120,7 +120,7 @@ then
 	git fetch && git fetch --tags && git checkout $GIT_TAG
 fi
 
-read -p "Du you want to build and run Freightseeker Angular application? [Y/n] " -n 1 -r
+read -p "Du you want to build and run Freightseeker Angular application? [Y/n] " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
