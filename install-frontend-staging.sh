@@ -129,7 +129,7 @@ then
 	docker rm $(docker ps -a -q)
 	docker rmi $(docker images -q)
 
-	docker:run:staging:ssr
+	npm run docker:run:staging:ssr
 fi
 
 exit
