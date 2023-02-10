@@ -6,7 +6,7 @@
 # Instructions:
 # 1. Login to new server as root
 # 2. Run installation script:
-# bash -c "$(wget -O - https://raw.githubusercontent.com/Freightseeker/Scripts/master/install-frontend-staging.sh)"
+# bash -c "$(wget -O - https://raw.githubusercontent.com/Freightseeker/Scripts/master/install-frontend-production.sh)"
 #
 ####################################################################
 
@@ -129,7 +129,7 @@ then
 	docker rm $(docker ps -a -q)
 	docker rmi $(docker images -q)
 
-	npm run docker:run:staging:ssr
+	npm run docker:run:prod:ssr
 fi
 
 exit
