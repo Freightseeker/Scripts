@@ -80,24 +80,51 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	# Uninstall old versions
 	apt-get remove docker docker-engine docker.io
+ 	apt remove docker-desktop
+	rm -r $HOME/.docker/desktop
+	rm /usr/local/bin/com.docker.cli
+	apt purge docker-desktop
+
+ 	# Install packages for docker repository
+  	apt-get install \
+    	ca-certificates \
+    	curl \
+    	gnupg \
+    	lsb-release
+
+     	# Add Docker’s GPG key to your system
+      	mkdir -p /etc/apt/keyrings
+      	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 	# Update packages
 	apt-get update
 
 	# Add Dockers official GPG key:
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
-	# set up the docker stable repository
+ 	# Setup Docker repository
+  	echo \
+  	"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  	$(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+	# set up the Docker stable repository
 	add-apt-repository \
 	"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
 	$(lsb_release -cs) \
 	stable"
 
+ 	# Show available Docker versions
+  	apt-cache madison docker-ce | awk '{ print $3 }'
+
+ 	# Install Docker version
+  	VERSION_STRING=5:24.0.6-1~ubuntu.22.04~jammy
+	apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-compose-plugin
+
 	# Update packages
 	apt-get update
 
 	# Install the latest version of Docker CE
-	apt-get install docker-ce
+	# apt-get install docker-ce
 
 	# Install Docker Compose
 	curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -117,7 +144,10 @@ then
 	git clone $GIT_REPOSITORY $WEB_ROOT
 	chown -R www-data:www-data $WEB_ROOT
 	cd $WEB_ROOT
-	git fetch && git fetch --tags && git checkout $GIT_TAG
+
+  	git config --global --add safe.directory /var/www
+   	git checkout . && git fetch && git fetch --tags --force && git checkout $GIT_TAG
+	# git fetch && git fetch --tags && git checkout $GIT_TAG
 fi
 
 read -p "Du you want to build and run Freightseeker Angular application? [Y/n] " -r
